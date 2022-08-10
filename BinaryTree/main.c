@@ -7,16 +7,16 @@ typedef struct Node {
 	int data;
 }Node;
 
-Node* root; //TreeÀÇ Root node ¸¦ Àü¿ª ÇÔ¼ö·Î ¼±¾ğ.
+Node* root; //Treeì˜ Root node ë¥¼ ì „ì—­ í•¨ìˆ˜ë¡œ ì„ ì–¸. 
 
 Node* insert(Node* root ,int data) {
-	if (!root) { //root°¡ Null ÀÌ¶ó¸é root node °¡ ¾øÀ»¶§
+	if (!root) { //rootê°€ Null ì´ë¼ë©´ root node ê°€ ì—†ì„ë•Œ
 		root = (Node*)malloc(sizeof(Node));
 		root->rchild = root->lchild = NULL;
 		root->data = data;
 		return root;
 	}
-	else { //root node °¡ !Null
+	else { //root node ê°€ !Null
 		if (data < root->data) { 
 			root->lchild = insert(root->lchild, data);
 		}
@@ -26,15 +26,15 @@ Node* insert(Node* root ,int data) {
 	}
 	return root;
 }
-//ÀüÀ§ ¼øÈ¸
+//ì „ìœ„ ìˆœíšŒ
 void preorder(Node * root){
-	if (root) { //root °¡ NullÀÌ ¾Æ´Ï¶ó¸é
+	if (root) { //root ê°€ Nullì´ ì•„ë‹ˆë¼ë©´
 		printf("%d -> ", root->data);
 		preorder(root->lchild);
 		preorder(root->rchild);
 	}
 }
-//ÁßÀ§ ¼øÈ¸
+//ì¤‘ìœ„ ìˆœíšŒ
 void inorder(Node* root){
 	if (root) { 
 		inorder(root->lchild);
@@ -42,7 +42,7 @@ void inorder(Node* root){
 		inorder(root->rchild);
 	}
 }
-//ÈÄÀ§ ¼øÈ¸
+//í›„ìœ„ ìˆœíšŒ
 void postorder(Node* root){
 	if (root) { 
 		postorder(root->lchild);
@@ -50,7 +50,7 @@ void postorder(Node* root){
 		printf("%d -> ", root->data);
 	}
 }
-//¸ğµç ¼øÈ¸¸¦ Ãâ·Â
+//ëª¨ë“  ìˆœíšŒë¥¼ ì¶œë ¥
 void veiw() {
 	printf("Preorder\n");
 	preorder(root);
@@ -68,13 +68,13 @@ void tree_menu(){
 		switch (op) {
 		case 1:
 			if (!root) {
-				printf("Root NodeÀÇ Data °ªÀ» ÀÔ·ÂÇÏ½Ã¿À : ");
+				printf("Root Nodeì˜ Data ê°’ì„ ì…ë ¥í•˜ì‹œì˜¤ : ");
 				scanf_s("%d", &data);
 				root = insert(root, data);
 				break;
 			}
 			else {
-				printf("»ğÀÔÇÒ Child NodeÀÇ Data °ªÀ» ÀÔ·ÂÇÏ½Ã¿À : ");
+				printf("ì‚½ì…í•  Child Nodeì˜ Data ê°’ì„ ì…ë ¥í•˜ì‹œì˜¤ : ");
 				scanf_s("%d", &data);
 				root = insert(root, data);
 				break;
